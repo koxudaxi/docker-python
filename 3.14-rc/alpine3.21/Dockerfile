@@ -16,8 +16,7 @@ RUN set -eux; \
 		tzdata \
 	;
 
-ENV PYTHON_VERSION 3.14.0a7
-ENV PYTHON_SHA256 71adbcec3ac9edf93308e55cfb4184f2eb4b16fda2bb0a5a382929ed29c8386d
+ENV PYTHON_VERSION 3.14-rc
 
 RUN set -eux; \
 	\
@@ -32,6 +31,7 @@ RUN set -eux; \
 		findutils \
 		gcc \
 		gdbm-dev \
+		git \
 		libc-dev \
 		libffi-dev \
 		libnsl-dev \
@@ -51,11 +51,7 @@ RUN set -eux; \
 		zlib-dev \
 	; \
 	\
-	wget -O python.tar.xz "https://www.python.org/ftp/python/${PYTHON_VERSION%%[a-z]*}/Python-$PYTHON_VERSION.tar.xz"; \
-	echo "$PYTHON_SHA256 *python.tar.xz" | sha256sum -c -; \
-	mkdir -p /usr/src/python; \
-	tar --extract --directory /usr/src/python --strip-components=1 --file python.tar.xz; \
-	rm python.tar.xz; \
+    git clone -b tstrings --depth 1 https://github.com/lysnikolaou/cpython.git /usr/src/python; \
 	\
 	cd /usr/src/python; \
 	gnuArch="$(dpkg-architecture --query DEB_BUILD_GNU_TYPE)"; \
