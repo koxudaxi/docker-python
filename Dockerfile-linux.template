@@ -56,8 +56,7 @@ RUN set -eux; \
 		# https://github.com/docker-library/python/issues/977
 		# https://peps.python.org/pep-0761/
 		# https://discuss.python.org/t/pep-761-deprecating-pgp-signatures-for-cpython-artifacts/67180
-		# rcVersion | IN("3.9", "3.10", "3.11", "3.12", "3.13")
-
+		rcVersion | IN("3.9", "3.10", "3.11", "3.12", "3.13")
 -}}
 {{ if should_pgp then ( -}}
 ENV GPG_KEY {{
