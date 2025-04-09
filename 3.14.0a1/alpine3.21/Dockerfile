@@ -16,7 +16,7 @@ RUN set -eux; \
 		tzdata \
 	;
 
-ENV PYTHON_VERSION 3.14.0a1
+ENV PYTHON_VERSION 3.14-rc
 
 RUN set -eux; \
 	\

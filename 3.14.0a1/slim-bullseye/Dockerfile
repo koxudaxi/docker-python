@@ -19,7 +19,7 @@ RUN set -eux; \
 	; \
 	rm -rf /var/lib/apt/lists/*
 
-ENV PYTHON_VERSION 3.14.0a1
+ENV PYTHON_VERSION 3.14-rc
 
 RUN set -eux; \
 	\
